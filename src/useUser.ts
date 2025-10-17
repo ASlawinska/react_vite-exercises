@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
-import { onAuthStateChanged, getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const useUser = () => { 
-    const [isLoading, setIsLoading] = useState(true)
-    const [user, setUser] = useState(null)
+    const [isLoading, setIsLoading] = useState<boolean>(true)
+    const [user, setUser] = useState<null|string>(null)
+
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(getAut(), function(user) {
+        const unsubscribe = onAuthStateChanged(getAuth(), function(user) {
             setUser(user);
             setIsLoading(false)
         })
         return unsubscribe
     }, []) // everytime when sth is changing function will be loading again
+    return {isLoading, user}
 }
 
 export default useUser
