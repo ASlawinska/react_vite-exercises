@@ -9,6 +9,7 @@ import AddCommentForm from "../AddCommentForm";
 
 
 export default function Article() {
+    const {user} = useUser()
     const {name} = useParams();
     const {upvotes: initialUpvotes, comments:initialComments} = useLoaderData()
     const [upvotes, setUpvotes]= useState(initialUpvotes)

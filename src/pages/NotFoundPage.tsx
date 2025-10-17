@@ -1,6 +1,6 @@
 import React from 'react'
 
-export function NotFoundPage() {
+export default function NotFoundPage() {
     
 
     return (
